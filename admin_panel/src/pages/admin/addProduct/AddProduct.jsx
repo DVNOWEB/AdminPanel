@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addProduct } from '../../../store/features/products/productListSlice'
 import { useNavigate } from 'react-router-dom'
 
-const AddProduct = ({isAdmin}) => {
+const AddProduct = () => {
   
-  const { user } = useSelector(state => state.auth)
+  const { admin } = useSelector(state => state.auth)
   const navigate = useNavigate()
 
   // useEffect(() => {
@@ -15,10 +15,10 @@ const AddProduct = ({isAdmin}) => {
   // }, [user])
 
   useEffect(() => {
-    if (!isAdmin) {
+    if (!admin) {
       navigate('/login-admin')
     }
-  }, [user, navigate])
+  }, [admin , navigate])
 
   const dispatch = useDispatch()
   const [productData, setProductData] = useState({

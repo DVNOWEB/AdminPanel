@@ -9,7 +9,7 @@ import {
 import GoogleBtn from '../../../components/googleBtn/GoogleBtn'
 
 const RegisterAdminPage = () => {
-  const { user, loading, error } = useSelector((state) => state.auth)
+  const { admin, loading, error } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [submitted, setSubmitted] = useState(false)
@@ -35,10 +35,10 @@ const RegisterAdminPage = () => {
   }
 
   useEffect(() => {
-    if (submitted && user && user.isAdmin) {
+    if (submitted && admin) {
       navigate('/admin-panel')
     }
-  }, [submitted, user, navigate])
+  }, [submitted, admin, navigate])
 
   return (
     <div className="login_sign_container">

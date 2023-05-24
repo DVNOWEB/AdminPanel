@@ -1,11 +1,13 @@
 import logo from '../../assets/placeholders/Logo.svg'
 import { Link, NavLink } from 'react-router-dom'
-import { useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logoutAdmin } from '../../store/features/auth/authSlice'
-import Admin from '../../pages/admin/Admin'
-
+// import Admin from '../../pages/admin/Admin'
 
 const Header = () => {
+  const { admin } = useSelector((state) => ({
+    admin: state.auth.admin,
+  }))
 
   const dispatch = useDispatch()
 
@@ -13,48 +15,44 @@ const Header = () => {
     <header>
       <nav className="nav_container">
         <div className="logo_div">
-          <Link to="/">
+          <Link to="/admin-panel">
             <img src={logo} alt="" />
           </Link>
         </div>
         <div className="nav_links_div">
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/admin-panel">Admin Panel</NavLink>
             </li>
-            <li>
-              <NavLink to="/products">Products</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-            {Admin ? (
+            {admin ? (
               <>
                 <li>
-                  <NavLink onClick={() => dispatch(logoutAdmin())}>
+                  <Link onClick={() => dispatch(logoutAdmin())}>
                     Logout
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to="/my-account">My account</NavLink>
+                  <NavLink to="/addProduct">Add Product</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/orders">Orders</NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <NavLink to="/login">Login</NavLink>
+                  <NavLink to="/login-admin">Login</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/register">Register</NavLink>
+                  <NavLink to="/register-admin">Register</NavLink>
                 </li>
               </>
             )}
-            
           </ul>
         </div>
       </nav>
     </header>
   )
-};
+}
 
-export default Header;
+export default Header

@@ -11,7 +11,7 @@ import GoogleBtn from '../../../components/googleBtn/GoogleBtn'
 const LoginAdmin = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { user, loading, error } = useSelector((state) => state.auth)
+  const { admin, loading, error } = useSelector((state) => state.auth)
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
@@ -30,10 +30,10 @@ const LoginAdmin = () => {
   }
 
   useEffect(() => {
-    if (submitted && user && user.isAdmin) {
+    if (submitted && admin) {
       navigate('/admin-panel')
     }
-  }, [submitted, user, navigate])
+  }, [submitted, admin, navigate])
 
   return (
     <div className="login_sign_container">

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const adminPanel = ({isAdmin}) => {
+const AdminPanel = () => {
 
-  const { user } = useSelector((state) => state.auth)
+  const { admin } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isAdmin) {
+    if (!admin) {
       navigate('/login-admin')
     }
-  }, [user, navigate])
+  }, [admin, navigate])
 
   return (
     <div className="login_sign_container">
@@ -24,4 +24,4 @@ const adminPanel = ({isAdmin}) => {
   )
 }
 
-export default adminPanel
+export default AdminPanel

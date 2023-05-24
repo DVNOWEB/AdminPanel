@@ -2,56 +2,54 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import authService from './authService'
 
 const initialState = {
-  user: null,
+  admin: null,
   loading: false,
   error: null,
   authIsReady: false,
 }
 
-// registerAdmin
 export const registerAdminUser = createAsyncThunk(
   'auth/registerAdmin',
   async (formData, thunkAPI) => {
     try {
-      return await authService.registerAdmin(formData.email, formData.password)
+      const { email, password } = formData
+      return await authService.registerAdmin(email, password)
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message)
+      return thunkAPI.rejectWithValue({ error: err.message })
     }
   }
 )
 
-// loginAdmin
 export const loginAdminUser = createAsyncThunk(
   'auth/loginAdmin',
   async (formData, thunkAPI) => {
     try {
-      return await authService.loginAdmin(formData.email, formData.password)
+      const { email, password } = formData
+      return await authService.loginAdmin(email, password)
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message)
+      return thunkAPI.rejectWithValue({ error: err.message })
     }
   }
-  )
-  
-  // logoutAdmin
-  export const logoutAdmin = createAsyncThunk(
-    'auth/logout',
-    async (_, thunkAPI) => {
-      try {
-        return await authService.logout()
-      } catch (err) {
-        return thunkAPI.rejectWithValue(err.message)
-      }
-    }
-  )
+)
 
-// login with google
 export const signInWithGoogle = createAsyncThunk(
   'auth/googleLogin',
   async (_, thunkAPI) => {
     try {
       return await authService.signInWithGoogle()
     } catch (err) {
-      return thunkAPI.rejectWithValue(err.message)
+      return thunkAPI.rejectWithValue({ error: err.message })
+    }
+  }
+)
+
+export const logoutAdmin = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      return await authService.logout()
+    } catch (err) {
+      return thunkAPI.rejectWithValue({ error: err.message })
     }
   }
 )
@@ -64,7 +62,7 @@ export const authSlice = createSlice({
       state.error = action.payload
     },
     authReady: (state, action) => {
-      state.user = action.payload
+      state.admin = action.payload
       state.authIsReady = true
     },
   },
@@ -75,7 +73,7 @@ export const authSlice = createSlice({
         state.loading = true
       })
       .addCase(registerAdminUser.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.admin = action.payload
         state.loading = false
         state.error = null
       })
@@ -89,7 +87,7 @@ export const authSlice = createSlice({
         state.loading = true
       })
       .addCase(loginAdminUser.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.admin = action.payload
         state.loading = false
         state.error = null
       })
@@ -103,7 +101,7 @@ export const authSlice = createSlice({
         state.loading = true
       })
       .addCase(signInWithGoogle.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.admin = action.payload
         state.loading = false
         state.error = null
       })
@@ -114,7 +112,7 @@ export const authSlice = createSlice({
 
       // logoutAdmin
       .addCase(logoutAdmin.fulfilled, (state) => {
-        state.user = null
+        state.admin = null
       })
   },
 })

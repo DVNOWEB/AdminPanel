@@ -83,10 +83,8 @@ const ProductCard = ({ product }) => {
         ) : (
           <p>{truncateDescription(product.description, 50)}</p>
         )}
-      </div>
 
 
-        <div className="productList-btns">
           <div className="product-price">
             {isEditing ? (
               <input
@@ -98,6 +96,10 @@ const ProductCard = ({ product }) => {
               <span>{product.price} kr</span>
             )}
           </div>
+      </div>
+
+
+        <div className="productList-btns">
 
           <button className="edit-btn" onClick={handleEdit}>
             {isEditing ? <FaCheck /> : <MdModeEdit />}

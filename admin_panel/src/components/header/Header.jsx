@@ -21,15 +21,13 @@ const Header = () => {
         </div>
         <div className="nav_links_div">
           <ul>
-            <li>
-              <NavLink to="/admin-panel">Admin Panel</NavLink>
-            </li>
             {admin ? (
               <>
                 <li>
-                  <Link onClick={() => dispatch(logoutAdmin())}>
-                    Logout
-                  </Link>
+                  <NavLink to="/admin-panel">Admin Panel</NavLink>
+                </li>
+                <li>
+                  <Link onClick={() => dispatch(logoutAdmin())}>Logout</Link>
                 </li>
                 <li>
                   <NavLink to="/addProduct">Add Product</NavLink>

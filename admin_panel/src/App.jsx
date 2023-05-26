@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import './App.scss'
 
+import Home from './pages/home/Home'
 import Header from './components/header/Header'
 import LoginAdmin from './pages/admin/loginAdmin/LoginAdmin'
 import RegisterAdmin from './pages/admin/registerAdmin/RegisterAdminPage'
@@ -48,6 +49,7 @@ const App = () => {
         <Router>
           <Header />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/login-admin" element={<LoginAdmin />} />
             <Route path="/register-admin" element={<RegisterAdmin />} />
             <Route path="/admin-panel" element={<Admin />} />

@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProduct } from '../../../store/features/products/productListSlice'
-import { useNavigate } from 'react-router-dom'
+import { getOrders } from '../../../store/features/orders/orderSlice'
+// import ProductCard from '../../../components/productCard/ProductCard'
+import OrderCard from '../../../components/orderCard/OrderCard'
 
-const orders = () => {
 
-  const { admin } = useSelector(state => state.auth)
-  const navigate = useNavigate()
+const Orders = () => {
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!admin) {
-      navigate('/login-admin')
-    }
-  }, [admin, navigate])
+    dispatch(getOrders())
+  }, [])
+
+  const { orders, loading, error } = useSelector((state) => state.orders)
 
   return (
-    <div>Orders</div>
+    <div className="products_container">
+      <h2 className="products-title">All Orders</h2>
+      <div className="products-collection">
+        {orders.map((order, i) => (
+          <OrderCard
+            key={i}
+            order={order}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
 
-export default orders
+export default Orders

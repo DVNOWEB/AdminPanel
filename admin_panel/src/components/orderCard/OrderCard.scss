@@ -1,16 +1,23 @@
-.products_container {
+.order_container {
   margin: 3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .order-title {
+    margin-bottom: 2rem;
+  }
 }
-// Products card styling
-.product_item {
+// order card styling
+.order_item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
+  margin: 2rem 0;
   border: 1px solid lightgray;
+  border-radius: .2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   width: 80vw;
   height: fit-content;
   padding: 1rem 2rem;
@@ -21,7 +28,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    img{
+    img {
       width: 60px;
       height: 60px;
       margin-right: 2rem;
@@ -30,44 +37,51 @@
       transform: scale(2.2);
       transition: all 0.3s ease-in-out;
     }
-    .product-name {
+    .order-name {
       font-size: 1rem;
       margin-right: 1rem;
+
+      h5 {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      option > .pending {
+        color: red;
+      }
     }
   }
-  
 
-  .right_box{
+  .right_box {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-direction: column;
+    align-items: flex-end;
 
-    .product-description{
+    .order-description {
       text-align: left;
       width: 200px;
       margin-right: 1rem;
     }
-    .product-price {
+    .order-price {
       font-weight: 700;
       text-align: left;
       width: 70px;
     }
-    .productList-btns {
+    .orderList-btns {
       display: flex;
       align-items: end;
       margin-left: 2rem;
-  
+
       .edit-btn {
-        font-size: 1.2rem;
-        padding-left: 0.5rem;
-        border: none;
+        font-size: 1rem;
+        padding: 0.2rem 1rem;
+        border: 1px solid lightgray;
+        border-radius: 0.5rem;
         background-color: transparent;
         color: svart;
         transition: all 0.3s ease-in-out;
         cursor: pointer;
       }
-  
+
       .edit-btn:hover {
         color: green;
       }
@@ -80,7 +94,7 @@
         transition: all 0.3s ease-in-out;
         cursor: pointer;
       }
-  
+
       .delete-btn:hover {
         color: red;
       }

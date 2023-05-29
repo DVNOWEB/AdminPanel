@@ -27,13 +27,13 @@ const Header = () => {
                   <NavLink to="/admin-panel">Admin Panel</NavLink>
                 </li>
                 <li>
-                  <Link onClick={() => dispatch(logoutAdmin())}>Logout</Link>
-                </li>
-                <li>
                   <NavLink to="/addProduct">Add Product</NavLink>
                 </li>
                 <li>
                   <NavLink to="/orders">Orders</NavLink>
+                </li>
+                <li>
+                  <Link onClick={() => dispatch(logoutAdmin())}>Logout</Link>
                 </li>
               </>
             ) : (

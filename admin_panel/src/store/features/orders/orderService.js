@@ -1,12 +1,16 @@
-import { collection, getDocs, updateDoc, doc } from 'firebase/firestore'
+import {
+  doc,
+  updateDoc,
+  collection,
+  getDocs,
+} from 'firebase/firestore'
 import { db } from '../../../firebase/config'
 
-
 const updateOrder = async (orderData) => {
-  const { id, ...data } = orderData
+  const { id, status, ...data } = orderData
   const orderRef = doc(db, 'orders', id)
 
-  await updateDoc(orderRef, data)
+  await updateDoc(orderRef, { status, ...data })
 }
 
 const getAllAsync = async (col) => {

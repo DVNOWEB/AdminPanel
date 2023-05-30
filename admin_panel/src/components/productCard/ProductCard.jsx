@@ -30,6 +30,7 @@ const ProductCard = ({ product }) => {
           id: product.id,
           name: editedName,
           price: editedPrice,
+          imageURL: product.imageURL,
           description: editedDescription,
         })
       )

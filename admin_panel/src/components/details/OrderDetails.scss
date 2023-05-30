@@ -7,15 +7,15 @@
   .detail_items{
     display: flex;
     flex-direction: row;
-  }
+    .left_side-box{
+     
   
-  .left_side-box{
-   
-
-    img{
-      width: 400px;
-      height: 400px;
-      object-fit: cover;
+      img{
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+      }
     }
   }
+  
 }

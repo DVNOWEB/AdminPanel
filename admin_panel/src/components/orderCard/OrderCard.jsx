@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  updateOrderStatus,
-} from '../../store/features/orders/orderSlice'
+import { updateOrderStatus } from '../../store/features/orders/orderSlice'
 import { MdModeEdit } from 'react-icons/md'
 import { FaCheck } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const OrderCard = ({ order }) => {
   // Corrected prop name
@@ -55,7 +54,9 @@ const OrderCard = ({ order }) => {
 
               {order.item.map((item, i) => (
                 <div key={i}>
-                  <img src={item.imageURL} alt={item.name} />
+                  <Link to={`/order-details/${order.id}`}>
+                    <img src={item.imageURL} alt={item.name} />
+                  </Link>
                   <p>Name: {item.name}</p>
                   <p>Price: {item.price} kr</p>
                   <p>Quantity: {item.quantity}</p>

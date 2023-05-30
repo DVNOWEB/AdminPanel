@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminPanel from '../../components/adminPanel/AdminPanel'
 import Products from '../products/Products'
-import Orders from './orders/Orders'
+// import Orders from './orders/Orders'
 
 const Admin = () => {
 
@@ -9,7 +9,7 @@ const Admin = () => {
     <>  
      <AdminPanel />
      <Products />
-     <Orders />
+     {/* <Orders /> */}
     </>
   )
 }

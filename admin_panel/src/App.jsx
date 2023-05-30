@@ -15,6 +15,7 @@ import AddProduct from './pages/admin/addProduct/AddProduct'
 import Orders from './pages/admin/orders/Orders'
 import Products from './pages/products/Products'
 import ProductDetails from './components/details/ProductDetails'
+import OrderDetails from './components/details/OrderDetails'
 
 
 // Firebase
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/admin-panel" element={<Products />} />
             <Route path="/addProduct" element={<AddProduct />} />
             <Route path="/product-details/:id" element={<ProductDetails />} />
+            <Route path="/order-details/:id" element={<OrderDetails />} />
             <Route path="/orders" element={<Orders />} />
           </Routes>
         </Router>

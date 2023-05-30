@@ -16,7 +16,7 @@ const AdminPanel = () => {
   return (
     <div className="login_sign_container">
       <div className="login_container">
-        <h2>Welcome to Admin Panel / {admin.email}</h2>
+        <h2>Welcome to Admin Panel</h2>
         <div className="info_login"></div>
         <hr />
       </div>

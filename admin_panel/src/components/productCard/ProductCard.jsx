@@ -60,23 +60,19 @@ const ProductCard = ({ product }) => {
   return (
     <div className="product_item">
       <div className="left_box">
-        <div className="product_img">
-          <img src={product.imageURL} alt={product.name} />
-        </div>
-
         <Link className="link" to={`/product-details/${product.id}`}>
-          <div className="product-name">
-            {isEditing ? (
-              <input
-                type="text"
-                value={editedName}
-                onChange={handleNameChange}
-              />
-            ) : (
-              <h5>{product.name}</h5>
-            )}
+          <div className="product_img">
+            <img src={product.imageURL} alt={product.name} />
           </div>
         </Link>
+
+        <div className="product-name">
+          {isEditing ? (
+            <input type="text" value={editedName} onChange={handleNameChange} />
+          ) : (
+            <h5>{product.name}</h5>
+          )}
+        </div>
       </div>
 
       <div className="right_box">

@@ -20,21 +20,21 @@ const OrderDetails = () => {
     <div className="main_container">
       <section className="order_details-container">
         {data.item.map((item, i) => (
-          <div className='detail_items' key={i}>
+          <div className="detail_items" key={i}>
             <div className="left_side-box">
               <img src={item.imageURL} alt={item.name} />
             </div>
             <div className="right_side-box">
-              <p>Item Name: {item.name}</p>
+              <p>Name: {item.name}</p>
               <p>Size: {item.size}</p>
-              <p>Item Price: {item.price} kr</p>
-              <p>Item Quantity: {item.quantity}</p>
+              <p>Price: {item.price} kr</p>
+              <p>Quantity: {item.quantity}</p>
+              <Link to={`/orders`}>
+                <button className="btn-back">Back to orders</button>
+              </Link>
             </div>
           </div>
         ))}
-        <Link to={`/orders`}>
-          <button className="btn-back">Back to orders</button>
-        </Link>
       </section>
     </div>
   )

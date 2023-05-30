@@ -2,7 +2,21 @@
   display: flex;
   justify-content: center;  
   text-align: center;
-  margin: 1rem;
+  margin: 3rem auto;
+
+  .product_picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    // border: 1px solid black;
+    img {
+      max-width: 450px;
+      width: 500px;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
   
   .right {
     display: flex;
@@ -14,21 +28,31 @@
     }
     h4 {
       font-size: 1rem;
-      margin-top: 5rem;
+      margin-top: 1rem;
     }
 
     button {
-      width: 100%;
-    }
-    button:hover {
-      width: 100%;
-      color: white;
-      background-color: black;
-    }
+        margin: 1rem 0;
+        width: 100%;
+        background-color: rgb(250, 49, 80);
+        color: #fff;
+        border: none;
+        border-radius: 0.2rem;
+        border: 1px solid rgb(250, 49, 80);
+        padding: 0.5rem 2rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #fff;
+        color: rgb(250, 49, 80);
+      }
   }
   
   p {
-    font-size: 4rem;
+    font-size: 3rem;
     color: red;
     margin-top: 14rem;
   }

@@ -17,7 +17,7 @@
   border: 1px solid lightgray;
   width: 80vw;
   height: 15vh;
-  padding:  1rem 3rem;
+  padding:  2rem;
   transition: all 0.3s ease-in-out;
 
   .left_box {
@@ -35,7 +35,7 @@
       transition: all 0.3s ease-in-out;
     }
     .product-name {
-      font-size: 1rem;
+      font-size: 1.3rem;
       margin-right: 1rem;
     }
 
@@ -96,8 +96,8 @@
     }
   }
 }
-
 .product_item:hover {
   background-color: #efefef;
   padding-right: 3rem;
 }
+

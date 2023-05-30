@@ -14,6 +14,8 @@ import Admin from './pages/admin/Admin'
 import AddProduct from './pages/admin/addProduct/AddProduct'
 import Orders from './pages/admin/orders/Orders'
 import Products from './pages/products/Products'
+import ProductDetails from './components/details/ProductDetails'
+
 
 // Firebase
 import { onAuthStateChanged } from 'firebase/auth'
@@ -55,6 +57,7 @@ const App = () => {
             <Route path="/admin-panel" element={<Admin />} />
             <Route path="/admin-panel" element={<Products />} />
             <Route path="/addProduct" element={<AddProduct />} />
+            <Route path="/product-details/:id" element={<ProductDetails />} />
             <Route path="/orders" element={<Orders />} />
           </Routes>
         </Router>

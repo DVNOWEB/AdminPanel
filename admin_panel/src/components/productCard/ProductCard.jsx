@@ -7,6 +7,7 @@ import {
   deleteProduct,
   updateProduct,
 } from '../../store/features/products/productListSlice'
+import { Link } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
@@ -63,27 +64,31 @@ const ProductCard = ({ product }) => {
           <img src={product.imageURL} alt={product.name} />
         </div>
 
-        <div className="product-name">
-          {isEditing ? (
-            <input type="text" value={editedName} onChange={handleNameChange} />
-          ) : (
-            <h5>{product.name}</h5>
-          )}
-        </div>
+        <Link className="link" to={`/product-details/${product.id}`}>
+          <div className="product-name">
+            {isEditing ? (
+              <input
+                type="text"
+                value={editedName}
+                onChange={handleNameChange}
+              />
+            ) : (
+              <h5>{product.name}</h5>
+            )}
+          </div>
+        </Link>
       </div>
 
-
       <div className="right_box">
-      <div className="product-description">
-        {isEditing ? (
-          <textarea
-            value={editedDescription}
-            onChange={handleDescriptionChange}
-          />
-        ) : (
-          <p>{truncateDescription(product.description, 50)}</p>
-        )}
-
+        <div className="product-description">
+          {isEditing ? (
+            <textarea
+              value={editedDescription}
+              onChange={handleDescriptionChange}
+            />
+          ) : (
+            <p>{truncateDescription(product.description, 50)}</p>
+          )}
 
           <div className="product-price">
             {isEditing ? (
@@ -96,11 +101,8 @@ const ProductCard = ({ product }) => {
               <span>{product.price} kr</span>
             )}
           </div>
-      </div>
-
-
+        </div>
         <div className="productList-btns">
-
           <button className="edit-btn" onClick={handleEdit}>
             {isEditing ? <FaCheck /> : <MdModeEdit />}
           </button>

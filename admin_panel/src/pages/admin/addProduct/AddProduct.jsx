@@ -31,7 +31,7 @@ const AddProduct = () => {
       }
     })
   }
-  // +productData.price converts a string to a number, only reason why we are doing the data object
+ 
   const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
@@ -39,6 +39,12 @@ const AddProduct = () => {
       price: +productData.price,
     }
     dispatch(addProduct(data))
+    setProductData({
+      name: '',
+      price: '',
+      imageURL: '',
+      description: '',
+    })
   }
 
   return (

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../../store/features/products/productListSlice'
 import { addProduct } from '../../../store/features/products/productListSlice'
 import { useNavigate } from 'react-router-dom'
+import Hero from '../../../components/hero/Hero'
 
 const AddProduct = () => {
-  
+  const dispatch = useDispatch()
   const { admin } = useSelector(state => state.auth)
+  const { products, loading, error } = useSelector((state) => state.productList)
   const navigate = useNavigate()
 
   useEffect(() => {
     if (!admin) {
       navigate('/login-admin')
     }
-  }, [admin , navigate])
+    dispatch(getProducts())
+  }, [admin , navigate, dispatch])
 
-  const dispatch = useDispatch()
   const [productData, setProductData] = useState({
     name: '',
     price: '',
@@ -106,6 +109,9 @@ const AddProduct = () => {
           </div>
         </div>
       </form>
+      <div className="slider">
+        <Hero products={products} />
+      </div>
     </div>
   )
 }

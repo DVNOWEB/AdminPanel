@@ -6,14 +6,16 @@ import {
 } from 'react-router-dom'
 import './App.scss'
 
-import Home from './pages/home/Home'
-import Header from './components/header/Header'
 import LoginAdmin from './pages/admin/loginAdmin/LoginAdmin'
 import RegisterAdmin from './pages/admin/registerAdmin/RegisterAdminPage'
+import Home from './pages/home/Home'
 import Admin from './pages/admin/Admin'
 import AddProduct from './pages/admin/addProduct/AddProduct'
 import Orders from './pages/admin/orders/Orders'
 import Products from './pages/products/Products'
+
+
+import Header from './components/header/Header'
 import ProductDetails from './components/details/ProductDetails'
 import OrderDetails from './components/details/OrderDetails'
 

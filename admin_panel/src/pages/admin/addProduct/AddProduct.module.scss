@@ -2,7 +2,9 @@
   max-width: 1224px;
   margin: 3rem auto;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   .add_product-details {
     display: flex;

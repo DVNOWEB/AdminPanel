@@ -4,12 +4,10 @@ import Products from '../products/Products'
 // import Orders from './orders/Orders'
 
 const Admin = () => {
-
   return (
-    <>  
-     <AdminPanel />
-     <Products />
-     {/* <Orders /> */}
+    <>
+      <AdminPanel />
+      <Products />
     </>
   )
 }

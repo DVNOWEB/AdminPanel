@@ -5,7 +5,7 @@ import {
   signOut,
 } from 'firebase/auth'
 import { auth, db, googleProvider } from '../../../firebase/config'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore'
 
 const registerAdmin = async (email, password) => {
   const userCredential = await createUserWithEmailAndPassword(
@@ -25,19 +25,50 @@ const registerAdmin = async (email, password) => {
   return admin
 }
 
-const logout = async () => {
-  return await signOut(auth)
+const loginAdmin = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    )
+
+    // Get a specific user from admins collection and filter by uid
+    const adminQuery = query(
+      collection(db, 'admins'),
+      where('uid', '==', userCredential.user.uid)
+    )
+    const querySnapshot = await getDocs(adminQuery)
+    
+    if (querySnapshot.docs.length === 0) {
+      return {
+        isAdmin: false,
+      }
+    }
+
+   
+    if (querySnapshot.length > 0)
+
+
+    console.log("we shouldn't be here")
+    const admin = {
+      uid: userCredential.user.uid,
+      email: userCredential.user.email,
+      isAdmin: true,
+    }
+    return admin
+  } catch (error) {
+    console.log(error)
+    return {
+      isAdmin: false,
+    }
+  }
 }
 
-const loginAdmin = async (email, password) => {
-  const userCredential = await signInWithEmailAndPassword(auth, email, password)
 
-  const admin = {
-    uid: userCredential.user.uid,
-    email: userCredential.user.email,
-    isAdmin: true, // Add a flag to indicate admin status
-  }
-  return admin
+
+const logout = async () => {
+  return await signOut(auth)
 }
 
 const signInWithGoogle = async () => {

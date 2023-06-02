@@ -24,14 +24,30 @@ const LoginAdmin = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    await dispatch(loginAdminUser(formData))
-    setSubmitted(true)
+    try {
+      e.preventDefault()
+      await dispatch(loginAdminUser(formData))
+      const loginData = loginAdminUser(formData)
+
+      const response = await dispatch(loginData)
+    
+      if (response?.error?.message === 'Rejected') {
+        alert('Not admin')
+        return
+      }
+      setSubmitted(true)
+    } catch (error) {
+      return dispatch(setError(error.message))
+    }
   }
 
   useEffect(() => {
     if (submitted && admin) {
       navigate('/admin-panel')
+    } else if (!submitted && !admin) {
+      dispatch(setError(''))
+      setSubmitted(false)
+      navigate('/login-admin')
     }
   }, [submitted, admin, navigate])
 
@@ -76,10 +92,10 @@ const LoginAdmin = () => {
           <button type="submit" className="submit-btn">
             Login
           </button>
-          <div className="social_login">
+          {/* <div className="social_login">
             <h3>Login with Google</h3>
             <GoogleBtn setSubmitted={setSubmitted} />
-          </div>
+          </div> */}
           <div className="terms">
             <p>
               You don't have an account? /{' '}

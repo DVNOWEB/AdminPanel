@@ -24,10 +24,18 @@ export const loginAdminUser = createAsyncThunk(
   'auth/loginAdmin',
   async (formData, thunkAPI) => {
     try {
-      const { email, password } = formData
-      return await authService.loginAdmin(email, password)
+      const { email, password } = formData;
+      const response = await authService.loginAdmin(email, password);
+      
+
+      if (response?.isAdmin) {
+        console.log('response?.isAdmin', response?.isAdmin)
+        return response
+      }
+      
+      return thunkAPI.rejectWithValue({error: 'You are not an admin'});
     } catch (err) {
-      return thunkAPI.rejectWithValue({ error: err.message })
+      return thunkAPI.rejectWithValue({ error: err.message });
     }
   }
 )

@@ -94,10 +94,10 @@ const RegisterAdminPage = () => {
           <button type="submit" className="submit-btn">
             Login
           </button>
-          <div className="social_login">
+          {/* <div className="social_login">
             <h3>Register with Google</h3>
             <GoogleBtn setSubmitted={setSubmitted} />
-          </div>
+          </div> */}
           <div className="terms">
             <p>
               Already an administrator? /{' '}
